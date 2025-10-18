@@ -1,7 +1,12 @@
+// ========================================
+// XY Services - Simplified JavaScript
+// Premium Shopify-Style Theme
+// ========================================
+
 // Loading Screen Animation
 let loadingProgress = 0;
 const loadingScreen = document.getElementById('loading-screen');
-const loadingPercentage = document.querySelector('.loading-percentage');
+const progressBar = document.querySelector('.loading-progress');
 
 const loadingInterval = setInterval(() => {
     loadingProgress += Math.random() * 15;
@@ -12,151 +17,17 @@ const loadingInterval = setInterval(() => {
             loadingScreen.classList.add('hidden');
             setTimeout(() => {
                 loadingScreen.style.display = 'none';
-            }, 500);
-        }, 500);
+            }, 400);
+        }, 300);
     }
-    loadingPercentage.textContent = Math.floor(loadingProgress) + '%';
-}, 200);
+    if (progressBar) {
+        progressBar.style.width = Math.floor(loadingProgress) + '%';
+    }
+}, 150);
 
-// Three.js 3D Background (Optimized for performance)
-const canvas = document.getElementById('bg-canvas');
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ 
-    canvas, 
-    alpha: true, 
-    antialias: false, // Disable for better performance
-    powerPreference: "high-performance"
-});
-
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap pixel ratio for performance
-camera.position.z = 5;
-
-// Create particles (reduced count for performance)
-const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 500; // Reduced from 1000
-const posArray = new Float32Array(particlesCount * 3);
-
-for (let i = 0; i < particlesCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 50;
-}
-
-particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-
-const particlesMaterial = new THREE.PointsMaterial({
-    size: 0.05,
-    color: 0x00d4ff,
-    transparent: true,
-    opacity: 0.9,
-    blending: THREE.AdditiveBlending
-});
-
-const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-scene.add(particlesMesh);
-
-// Create geometric shapes (optimized)
-const geometry = new THREE.TorusGeometry(1, 0.3, 12, 80); // Reduced segments
-const material = new THREE.MeshStandardMaterial({
-    color: 0x00d4ff,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.4
-});
-const torus = new THREE.Mesh(geometry, material);
-torus.position.z = -5;
-torus.position.x = 3;
-scene.add(torus);
-
-// Create second torus
-const geometry2 = new THREE.TorusGeometry(0.7, 0.2, 12, 80); // Reduced segments
-const material2 = new THREE.MeshStandardMaterial({
-    color: 0x3b82f6,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.4
-});
-const torus2 = new THREE.Mesh(geometry2, material2);
-torus2.position.z = -3;
-torus2.position.x = -3;
-scene.add(torus2);
-
-// Create third shape - octahedron
-const geometry3 = new THREE.OctahedronGeometry(0.8, 0);
-const material3 = new THREE.MeshStandardMaterial({
-    color: 0xa855f7,
-    wireframe: true,
-    transparent: true,
-    opacity: 0.4
-});
-const octa = new THREE.Mesh(geometry3, material3);
-octa.position.z = -4;
-octa.position.y = 2;
-scene.add(octa);
-
-// Add lighting (reduced intensity for performance)
-const pointLight = new THREE.PointLight(0x00d4ff, 1);
-pointLight.position.set(5, 5, 5);
-scene.add(pointLight);
-
-const pointLight2 = new THREE.PointLight(0x3b82f6, 1);
-pointLight2.position.set(-5, -5, -5);
-scene.add(pointLight2);
-
-const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
-scene.add(ambientLight);
-
-// Mouse movement effect (throttled for performance)
-let mouseX = 0;
-let mouseY = 0;
-let targetX = 0;
-let targetY = 0;
-
-document.addEventListener('mousemove', (event) => {
-    targetX = (event.clientX / window.innerWidth) * 2 - 1;
-    targetY = -(event.clientY / window.innerHeight) * 2 + 1;
-});
-
-// Animation loop (optimized)
-function animate() {
-    requestAnimationFrame(animate);
-
-    // Smooth mouse interpolation
-    mouseX += (targetX - mouseX) * 0.05;
-    mouseY += (targetY - mouseY) * 0.05;
-
-    // Rotate shapes (reduced rotation speed)
-    torus.rotation.x += 0.003;
-    torus.rotation.y += 0.003;
-    torus2.rotation.x -= 0.002;
-    torus2.rotation.y -= 0.002;
-    octa.rotation.x += 0.004;
-    octa.rotation.y += 0.002;
-
-    // Rotate particles (slower)
-    particlesMesh.rotation.y += 0.0003;
-    particlesMesh.rotation.x += 0.0001;
-
-    // Camera follows mouse (smoother)
-    camera.position.x += (mouseX * 0.3 - camera.position.x) * 0.03;
-    camera.position.y += (mouseY * 0.3 - camera.position.y) * 0.03;
-    camera.lookAt(scene.position);
-
-    renderer.render(scene, camera);
-}
-
-animate();
-
-// Handle window resize
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-// Navigation Scroll Effect
-const navbar = document.getElementById('navbar');
-const navLinks = document.querySelectorAll('.nav-link');
+// Navbar Scroll Effect
+const navbar = document.querySelector('.navbar');
+let lastScrollY = window.scrollY;
 
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
@@ -164,396 +35,211 @@ window.addEventListener('scroll', () => {
     } else {
         navbar.classList.remove('scrolled');
     }
-
-    // Update active nav link based on scroll position
-    let current = '';
-    const sections = document.querySelectorAll('section');
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href').slice(1) === current) {
-            link.classList.add('active');
-        }
-    });
 });
 
 // Mobile Navigation Toggle
-const navToggle = document.getElementById('nav-toggle');
-const navMenu = document.getElementById('nav-menu');
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
 
-navToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-    navToggle.classList.toggle('active');
-});
-
-// Close mobile menu when clicking on a link
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
-        navToggle.classList.remove('active');
-    });
-});
-
-// Smooth scroll for navigation links
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('href');
-        const targetSection = document.querySelector(targetId);
+if (navToggle) {
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
         
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
+        // Animate hamburger icon
+        const bars = navToggle.querySelectorAll('.bar');
+        bars[0].style.transform = navMenu.classList.contains('active') 
+            ? 'rotate(-45deg) translate(-5px, 6px)' 
+            : 'none';
+        bars[1].style.opacity = navMenu.classList.contains('active') ? '0' : '1';
+        bars[2].style.transform = navMenu.classList.contains('active') 
+            ? 'rotate(45deg) translate(-5px, -6px)' 
+            : 'none';
+    });
+
+    // Close menu when clicking nav link
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            const bars = navToggle.querySelectorAll('.bar');
+            bars[0].style.transform = 'none';
+            bars[1].style.opacity = '1';
+            bars[2].style.transform = 'none';
+        });
+    });
+}
+
+// Active Navigation Link on Scroll
+const sections = document.querySelectorAll('section[id]');
+
+function updateActiveNav() {
+    const scrollY = window.scrollY;
+
+    sections.forEach(section => {
+        const sectionHeight = section.offsetHeight;
+        const sectionTop = section.offsetTop - 100;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
             });
         }
     });
-});
+}
 
-// Initialize AOS (Animate On Scroll)
-window.addEventListener('load', () => {
-    AOS.init({
-        duration: 1000,
-        easing: 'ease-in-out',
-        once: true,
-        mirror: false
+window.addEventListener('scroll', updateActiveNav);
+
+// Theme Toggle Functionality
+const themeToggle = document.querySelector('.theme-toggle');
+const root = document.documentElement;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme') || 'dark';
+document.body.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-theme') || 'dark';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme);
     });
-});
+}
 
-// Button 3D Tilt Effect
-const buttons = document.querySelectorAll('.btn-3d');
+function updateThemeIcon(theme) {
+    if (themeToggle) {
+        const icon = themeToggle.querySelector('i');
+        if (icon) {
+            icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    }
+}
 
-buttons.forEach(button => {
-    button.addEventListener('mousemove', (e) => {
-        const rect = button.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 10;
-        const rotateY = (centerX - x) / 10;
-        
-        button.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-5px)`;
-    });
-    
-    button.addEventListener('mouseleave', () => {
-        button.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    });
-});
-
-// Service Cards Tilt Effect
-const serviceCards = document.querySelectorAll('.service-item');
-
-serviceCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    });
-});
-
-// Pricing Cards Tilt Effect
-const pricingCards = document.querySelectorAll('.pricing-card:not(.featured)');
-
-pricingCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-    });
-});
-
-// Form Handling
+// Contact Form Handling
 const contactForm = document.querySelector('.form-3d');
 
 if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
+    contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        // Get form values
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const service = document.getElementById('service').value;
-        const message = document.getElementById('message').value;
+        const submitBtn = contactForm.querySelector('.btn-primary');
+        const originalText = submitBtn.textContent;
         
-        // Show success message (you can replace this with actual form submission)
-        alert(`Thank you, ${name}! Your message has been received. We'll get back to you at ${email} soon!`);
+        // Show loading state
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
         
-        // Reset form
-        contactForm.reset();
+        // Get form data
+        const formData = {
+            name: contactForm.querySelector('[name="name"]').value,
+            email: contactForm.querySelector('[name="email"]').value,
+            service: contactForm.querySelector('[name="service"]').value,
+            message: contactForm.querySelector('[name="message"]').value
+        };
+        
+        // Simulate form submission (replace with actual API call)
+        setTimeout(() => {
+            // Success
+            submitBtn.textContent = '✓ Message Sent!';
+            submitBtn.style.background = '#10b981';
+            
+            // Reset form
+            contactForm.reset();
+            
+            // Reset button after 3 seconds
+            setTimeout(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+                submitBtn.style.background = '';
+            }, 3000);
+            
+            // Log form data (replace with actual API call)
+            console.log('Form submitted:', formData);
+        }, 1500);
     });
 }
 
-// Floating Cards Animation Enhancement
-const floatingCards = document.querySelectorAll('.service-card');
-
-floatingCards.forEach((card, index) => {
-    card.addEventListener('mouseenter', () => {
-        card.style.animationPlayState = 'paused';
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        }
     });
-    
-    card.addEventListener('mouseleave', () => {
-        card.style.animationPlayState = 'running';
-    });
-});
-
-// Parallax Scroll Effect (throttled for performance)
-let ticking = false;
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const scrolled = window.pageYOffset;
-            const parallaxElements = document.querySelectorAll('.hero-visual, .features-visual');
-            
-            parallaxElements.forEach(element => {
-                const speed = 0.3; // Reduced speed
-                element.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-            ticking = false;
-        });
-        ticking = true;
-    }
 });
 
 // Number Counter Animation for Stats
-const statNumbers = document.querySelectorAll('.stat-number');
-const observerOptions = {
-    threshold: 0.5,
-    rootMargin: '0px'
-};
+const stats = document.querySelectorAll('.stat-number');
+let hasAnimated = false;
 
-const animateCounter = (element) => {
-    const target = element.textContent;
-    const isPercentage = target.includes('%');
-    const isPlus = target.includes('+');
-    const hasSlash = target.includes('/');
+function animateNumbers() {
+    if (hasAnimated) return;
     
-    if (hasSlash) return; // Skip 24/7 type stats
+    const statsSection = document.querySelector('.hero-stats');
+    if (!statsSection) return;
     
-    let numericValue = parseInt(target.replace(/[^0-9]/g, ''));
-    if (isNaN(numericValue)) return;
+    const rect = statsSection.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
     
-    const duration = 2000;
-    const increment = numericValue / (duration / 16);
-    let current = 0;
-    
-    const updateCounter = () => {
-        current += increment;
-        if (current < numericValue) {
-            let displayValue = Math.floor(current);
-            if (isPercentage) displayValue += '%';
-            if (isPlus && !isPercentage) displayValue = displayValue + 'K+';
-            element.textContent = displayValue;
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target;
-        }
-    };
-    
-    updateCounter();
-};
-
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            animateCounter(entry.target);
-            statsObserver.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-statNumbers.forEach(stat => {
-    statsObserver.observe(stat);
-});
-
-// Interactive Particle Effect on Mouse Move
-const loadingParticles = document.querySelector('.loading-particles');
-
-if (loadingParticles) {
-    for (let i = 0; i < 50; i++) {
-        const particle = document.createElement('div');
-        particle.style.position = 'absolute';
-        particle.style.width = Math.random() * 3 + 1 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.background = 'rgba(0, 212, 255, 0.8)';
-        particle.style.borderRadius = '50%';
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-        particle.style.animation = `particleFloat ${Math.random() * 3 + 2}s infinite ease-in-out`;
-        particle.style.animationDelay = Math.random() * 2 + 's';
-        loadingParticles.appendChild(particle);
+    if (isVisible) {
+        hasAnimated = true;
+        
+        stats.forEach(stat => {
+            const target = parseInt(stat.textContent.replace(/[^0-9]/g, ''));
+            const suffix = stat.textContent.replace(/[0-9]/g, '');
+            let current = 0;
+            const increment = target / 50;
+            
+            const counter = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    stat.textContent = target + suffix;
+                    clearInterval(counter);
+                } else {
+                    stat.textContent = Math.floor(current) + suffix;
+                }
+            }, 30);
+        });
     }
 }
 
-// Add particle float animation dynamically
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes particleFloat {
-        0%, 100% {
-            transform: translateY(0px) translateX(0px);
-            opacity: 0;
-        }
-        50% {
-            opacity: 1;
-        }
-        100% {
-            transform: translateY(-100px) translateX(${Math.random() * 100 - 50}px);
-        }
-    }
-`;
-document.head.appendChild(style);
+window.addEventListener('scroll', animateNumbers);
+window.addEventListener('load', animateNumbers);
 
-// Scroll to top button (optional enhancement)
-const createScrollTopButton = () => {
-    const button = document.createElement('button');
-    button.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    button.className = 'scroll-top-btn';
-    button.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #00d4ff 0%, #4ecdc4 100%);
-        border: none;
-        border-radius: 50%;
-        color: #0a0a0a;
-        font-size: 1.2rem;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.3s ease;
-        z-index: 999;
-        box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
-    `;
-    
-    document.body.appendChild(button);
-    
+// Add hover effects to service cards
+const serviceCards = document.querySelectorAll('.service-item');
+serviceCards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.3s ease';
+    });
+});
+
+// Parallax effect for hero section (subtle)
+const hero = document.querySelector('.hero');
+if (hero) {
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 500) {
-            button.style.opacity = '1';
-            button.style.visibility = 'visible';
-        } else {
-            button.style.opacity = '0';
-            button.style.visibility = 'hidden';
+        const scrolled = window.scrollY;
+        if (scrolled < window.innerHeight) {
+            hero.style.transform = `translateY(${scrolled * 0.3}px)`;
         }
     });
-    
-    button.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    button.addEventListener('mouseenter', () => {
-        button.style.transform = 'translateY(-5px)';
-        button.style.boxShadow = '0 10px 25px rgba(0, 212, 255, 0.6)';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-        button.style.transform = 'translateY(0)';
-        button.style.boxShadow = '0 5px 15px rgba(0, 212, 255, 0.4)';
-    });
-};
+}
 
-createScrollTopButton();
-
-// Cursor trail effect (optional enhancement)
-const createCursorTrail = () => {
-    const coords = { x: 0, y: 0 };
-    const circles = document.querySelectorAll('.cursor-circle');
-    
-    // Create cursor circles
-    for (let i = 0; i < 20; i++) {
-        const circle = document.createElement('div');
-        circle.className = 'cursor-circle';
-        circle.style.cssText = `
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(0, 212, 255, 0.3);
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.1s ease;
-        `;
-        document.body.appendChild(circle);
-    }
-    
-    const circlesArray = Array.from(document.querySelectorAll('.cursor-circle'));
-    
-    circlesArray.forEach((circle, index) => {
-        circle.x = 0;
-        circle.y = 0;
-    });
-    
-    window.addEventListener('mousemove', (e) => {
-        coords.x = e.clientX;
-        coords.y = e.clientY;
-    });
-    
-    function animateCircles() {
-        let x = coords.x;
-        let y = coords.y;
-        
-        circlesArray.forEach((circle, index) => {
-            circle.style.left = x - 5 + 'px';
-            circle.style.top = y - 5 + 'px';
-            circle.style.transform = `scale(${(circlesArray.length - index) / circlesArray.length})`;
-            
-            circle.x = x;
-            circle.y = y;
-            
-            const nextCircle = circlesArray[index + 1] || circlesArray[0];
-            x += (nextCircle.x - x) * 0.3;
-            y += (nextCircle.y - y) * 0.3;
-        });
-        
-        requestAnimationFrame(animateCircles);
-    }
-    
-    animateCircles();
-};
-
-// Uncomment to enable cursor trail effect
-// createCursorTrail();
-
-console.log('🎮 XY Services - Website Loaded Successfully!');
-console.log('💎 3D Effects Active');
-console.log('⚡ All animations initialized');
+console.log('%c🎮 XY Services', 'font-size: 20px; font-weight: bold; color: #3b82f6;');
+console.log('%cPremium Roblox Services', 'font-size: 14px; color: #a3a3a3;');

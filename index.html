@@ -12,50 +12,27 @@
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Three.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loading-container">
-            <div class="roblox-logo">
-                <div class="cube-stack">
-                    <div class="cube cube-1"></div>
-                    <div class="cube cube-2"></div>
-                    <div class="cube cube-3"></div>
-                    <div class="cube cube-4"></div>
-                </div>
-            </div>
             <div class="loading-text">
                 <h2>XY Services</h2>
-                <p>Loading your premium experience...</p>
+                <p>Loading...</p>
             </div>
             <div class="loading-bar">
                 <div class="loading-progress"></div>
             </div>
-            <div class="loading-percentage">0%</div>
         </div>
-        <div class="loading-particles"></div>
     </div>
-
-    <!-- 3D Background Canvas -->
-    <canvas id="bg-canvas"></canvas>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <div class="logo-3d">
-                    <span class="logo-text">XY Services</span>
-                    <div class="logo-glow"></div>
-                </div>
+                <span class="logo-text">XY Services</span>
             </div>
             
             <div class="nav-menu" id="nav-menu">
@@ -65,6 +42,10 @@
                 <a href="#pricing" class="nav-link">How It Works</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
+            
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fas fa-moon"></i>
+            </button>
             
             <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
@@ -77,7 +58,7 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
-            <div class="hero-text" data-aos="fade-up">
+            <div class="hero-text">
                 <h1 class="hero-title">
                     <span class="title-line">Premium Roblox</span>
                     <span class="title-line highlight">Grinding Services</span>
@@ -87,18 +68,12 @@
                     Get rare items, level up fast, and dominate your favorite games with our professional team.
                 </p>
                 <div class="hero-buttons">
-                    <button class="btn btn-primary btn-3d">
-                        <span>Browse Services</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                    <button class="btn btn-outline btn-3d">
-                        <span>Contact Us</span>
-                        <div class="btn-glow"></div>
-                    </button>
+                    <a href="#services" class="btn btn-primary">Browse Services</a>
+                    <a href="#contact" class="btn btn-outline">Contact Us</a>
                 </div>
             </div>
             
-            <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+            <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-number">10K+</div>
                     <div class="stat-label">Orders Completed</div>
@@ -113,93 +88,118 @@
                 </div>
             </div>
         </div>
-        
-        <div class="hero-visual">
-            <div class="floating-cards">
-                <div class="service-card card-1" data-aos="fade-left" data-aos-delay="400">
-                    <i class="fas fa-gamepad"></i>
-                    <h3>Grinding Services</h3>
-                </div>
-                <div class="service-card card-2" data-aos="fade-left" data-aos-delay="600">
-                    <i class="fas fa-coins"></i>
-                    <h3>Game Currency</h3>
-                </div>
-                <div class="service-card card-3" data-aos="fade-left" data-aos-delay="800">
-                    <i class="fas fa-trophy"></i>
-                    <h3>Achievements</h3>
-                </div>
-            </div>
-        </div>
-
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-            <span>Scroll to explore</span>
-        </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <h2 class="section-title">Our Services</h2>
-                <p class="section-subtitle">Professional Roblox services tailored to your gaming needs</p>
+            <div class="section-header">
+                <h2 class="section-title">What We Offer</h2>
+                <p class="section-subtitle">Premium grinding services for your favorite Roblox games</p>
             </div>
             
             <div class="services-grid">
-                <div class="service-item" data-aos="flip-left" data-aos-delay="100">
-                    <div class="service-icon">
-                        <i class="fas fa-dumbbell"></i>
+                <!-- Blox Fruits Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <div class="card-badge">Popular</div>
+                        <div class="game-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-lemon"></i>
+                        </div>
                     </div>
-                    <h3>Blox Fruits Grinding</h3>
-                    <p>Professional grinding services for Blox Fruits - Level up, farm mastery, and unlock abilities fast.</p>
-                    <ul class="service-features">
-                        <li>Level & mastery grinding</li>
-                        <li>Fruit hunting</li>
-                        <li>Boss farming</li>
-                    </ul>
-                    <button class="btn btn-service">Order Now</button>
+                    <div class="card-content">
+                        <h3>Blox Fruits</h3>
+                        <p class="card-description">Professional grinding, leveling, and mastery farming services</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Fast leveling & mastery</li>
+                            <li><i class="fas fa-check"></i> Fruit hunting & trading</li>
+                            <li><i class="fas fa-check"></i> Boss farming</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Starting at</span>
+                                <span class="price-value">$9.99</span>
+                            </div>
+                            <button class="btn btn-card">Order Now</button>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="service-item" data-aos="flip-left" data-aos-delay="200">
-                    <div class="service-icon">
-                        <i class="fas fa-fire"></i>
+                <!-- Pet Simulator X Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <div class="card-badge featured">Trending</div>
+                        <div class="game-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-paw"></i>
+                        </div>
                     </div>
-                    <h3>Pet Simulator X</h3>
-                    <p>Get rare pets, gems, and exclusive items. Fast and reliable Pet Simulator X grinding service.</p>
-                    <ul class="service-features">
-                        <li>Rare pet collection</li>
-                        <li>Gem farming</li>
-                        <li>Event grinding</li>
-                    </ul>
-                    <button class="btn btn-service">Order Now</button>
+                    <div class="card-content">
+                        <h3>Pet Simulator X</h3>
+                        <p class="card-description">Rare pets, massive gem farming, and exclusive event grinding</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Rare pet collection</li>
+                            <li><i class="fas fa-check"></i> Gem farming</li>
+                            <li><i class="fas fa-check"></i> Event exclusive items</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Starting at</span>
+                                <span class="price-value">$14.99</span>
+                            </div>
+                            <button class="btn btn-card">Order Now</button>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="service-item" data-aos="flip-left" data-aos-delay="300">
-                    <div class="service-icon">
-                        <i class="fas fa-crosshairs"></i>
+                <!-- Da Hood Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <div class="game-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
                     </div>
-                    <h3>Da Hood Grinding</h3>
-                    <p>Cash grinding, weapon farming, and skill development for Da Hood players.</p>
-                    <ul class="service-features">
-                        <li>Cash farming</li>
-                        <li>Weapon collection</li>
-                        <li>Skill grinding</li>
-                    </ul>
-                    <button class="btn btn-service">Order Now</button>
+                    <div class="card-content">
+                        <h3>Da Hood</h3>
+                        <p class="card-description">Cash grinding, weapon farming, and skill development services</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Cash farming</li>
+                            <li><i class="fas fa-check"></i> Weapon collection</li>
+                            <li><i class="fas fa-check"></i> Skill progression</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Starting at</span>
+                                <span class="price-value">$12.99</span>
+                            </div>
+                            <button class="btn btn-card">Order Now</button>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="service-item" data-aos="flip-left" data-aos-delay="400">
-                    <div class="service-icon">
-                        <i class="fas fa-gem"></i>
+                <!-- Premium Items Card -->
+                <div class="service-card">
+                    <div class="card-image">
+                        <div class="card-badge new">New</div>
+                        <div class="game-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-gem"></i>
+                        </div>
                     </div>
-                    <h3>Premium Items</h3>
-                    <p>Rare in-game items, limited editions, and exclusive content across multiple Roblox games.</p>
-                    <ul class="service-features">
-                        <li>Rare collectibles</li>
-                        <li>Limited items</li>
-                        <li>Game-specific items</li>
-                    </ul>
-                    <button class="btn btn-service">Order Now</button>
+                    <div class="card-content">
+                        <h3>Premium Items</h3>
+                        <p class="card-description">Rare collectibles, limited editions, and exclusive content</p>
+                        <ul class="card-features">
+                            <li><i class="fas fa-check"></i> Rare collectibles</li>
+                            <li><i class="fas fa-check"></i> Limited edition items</li>
+                            <li><i class="fas fa-check"></i> Game-specific rewards</li>
+                        </ul>
+                        <div class="card-footer">
+                            <div class="card-price">
+                                <span class="price-label">Starting at</span>
+                                <span class="price-value">$19.99</span>
+                            </div>
+                            <button class="btn btn-card">Order Now</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -209,7 +209,7 @@
     <section class="features">
         <div class="container">
             <div class="features-content">
-                <div class="features-text" data-aos="fade-right">
+                <div class="features-text">
                     <h2>Why Choose XY Services?</h2>
                     <div class="feature-list">
                         <div class="feature-item">
@@ -244,7 +244,7 @@
                     </div>
                 </div>
                 
-                <div class="features-visual" data-aos="fade-left">
+                <div class="features-visual">
                     <div class="floating-elements">
                         <div class="floating-card">
                             <i class="fab fa-discord"></i>
@@ -267,13 +267,13 @@
     <!-- How It Works Section -->
     <section id="pricing" class="pricing">
         <div class="container">
-            <div class="section-header" data-aos="fade-up">
+            <div class="section-header">
                 <h2 class="section-title">How It Works</h2>
                 <p class="section-subtitle">Simple 3-step process to get your order completed</p>
             </div>
             
             <div class="pricing-grid">
-                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
+                <div class="pricing-card">
                     <div class="step-number">1</div>
                     <div class="pricing-header">
                         <h3>Place Order</h3>
@@ -281,7 +281,7 @@
                     <p class="step-description">Contact us via Discord or the form below with your grinding requirements and game details.</p>
                 </div>
                 
-                <div class="pricing-card featured" data-aos="zoom-in" data-aos-delay="200">
+                <div class="pricing-card featured">
                     <div class="step-number">2</div>
                     <div class="pricing-header">
                         <h3>Processing</h3>
@@ -290,7 +290,7 @@
                     <div class="processing-badge">⏱️ ~24 Hours</div>
                 </div>
                 
-                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="300">
+                <div class="pricing-card">
                     <div class="step-number">3</div>
                     <div class="pricing-header">
                         <h3>Delivery</h3>
@@ -299,7 +299,7 @@
                 </div>
             </div>
             
-            <div class="info-banner" data-aos="fade-up" data-aos-delay="400">
+            <div class="info-banner">
                 <i class="fas fa-info-circle"></i>
                 <p><strong>Processing Time:</strong> All orders typically take around 24 hours to complete. Complex requests may take longer. We'll keep you updated throughout the process!</p>
             </div>
@@ -310,7 +310,7 @@
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right">
+                <div class="contact-info">
                     <h2>Get In Touch</h2>
                     <p>Ready to level up your Roblox experience? Contact us today!</p>
                     
@@ -350,7 +350,7 @@
                     </div>
                 </div>
                 
-                <div class="contact-form" data-aos="fade-left">
+                <div class="contact-form">
                     <form class="form-3d">
                         <div class="form-group">
                             <input type="text" id="name" required>
@@ -395,10 +395,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <div class="logo-3d">
-                            <span class="logo-text">XY Services</span>
-                            <div class="logo-glow"></div>
-                        </div>
+                        <span class="logo-text">XY Services</span>
                     </div>
                     <p>Premium Roblox services and products for the ultimate gaming experience.</p>
                     <div class="social-links">
