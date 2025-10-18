@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XY Services - Premium Roblox Grinding Services</title>
-    <meta name="description" content="Professional Roblox grinding services for Blox Fruits, Pet Simulator X, Da Hood and more. Fast 24h delivery, secure and reliable.">
+    <title>ShopHub - Modern E-Commerce Store</title>
+    <meta name="description" content="Shop the latest products with great deals and fast shipping. Quality products at amazing prices.">
     
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -15,43 +15,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen">
-        <div class="loading-container">
-            <div class="loading-text">
-                <h2>XY Services</h2>
-                <p>Loading...</p>
-            </div>
-            <div class="loading-bar">
-                <div class="loading-progress"></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
-    <nav class="navbar" id="navbar">
+    <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <span class="logo-text">XY Services</span>
+                <i class="fas fa-shopping-bag"></i>
+                <span class="logo-text">ShopHub</span>
             </div>
             
-            <div class="nav-menu" id="nav-menu">
+            <div class="nav-menu">
                 <a href="#home" class="nav-link active">Home</a>
-                <a href="#services" class="nav-link">Services</a>
-                <a href="#products" class="nav-link">Games</a>
-                <a href="#pricing" class="nav-link">How It Works</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#deals" class="nav-link">Deals</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             
-            <div class="search-container">
-                <i class="fas fa-search"></i>
-                <input type="text" class="search-bar" id="search-bar" placeholder="Search games...">
+            <div class="nav-actions">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" class="search-bar" id="search-bar" placeholder="Search products...">
+                </div>
+                <button class="icon-btn" id="cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-user"></i>
+                </button>
             </div>
             
             <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
                 <i class="fas fa-moon"></i>
             </button>
-            
             <div class="nav-toggle" id="nav-toggle">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -60,149 +56,380 @@
         </div>
     </nav>
 
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h2><i class="fas fa-shopping-cart"></i> Shopping Cart</h2>
+            <button class="close-cart" id="close-cart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="total-price" id="total-price">$0.00</span>
+            </div>
+            <button class="btn btn-primary btn-checkout">Proceed to Checkout</button>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <div class="hero-text">
                 <h1 class="hero-title">
-                    <span class="title-line">Premium Roblox</span>
-                    <span class="title-line highlight">Grinding Services</span>
+                    <span class="title-line">Welcome to</span>
+                    <span class="title-line highlight">ShopHub</span>
                 </h1>
                 <p class="hero-subtitle">
-                    Fast, reliable, and secure Roblox grinding services for popular games. 
-                    Get rare items, level up fast, and dominate your favorite games with our professional team.
+                    Discover amazing products at unbeatable prices. Shop the latest trends in electronics, fashion, home & garden, and more. Free shipping on orders over $50!
                 </p>
                 <div class="hero-buttons">
-                    <a href="#services" class="btn btn-primary">Browse Services</a>
-                    <a href="#contact" class="btn btn-outline">Contact Us</a>
+                    <a href="#products" class="btn btn-primary">Shop Now</a>
+                    <a href="#deals" class="btn btn-outline">Today's Deals</a>
                 </div>
             </div>
             
             <div class="hero-stats">
                 <div class="stat-item">
                     <div class="stat-number">10K+</div>
-                    <div class="stat-label">Orders Completed</div>
+                    <div class="stat-label">Products</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Support Available</div>
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Happy Customers</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">99.9%</div>
-                    <div class="stat-label">Success Rate</div>
+                    <div class="stat-number">FREE</div>
+                    <div class="stat-label">Shipping Over $50</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="services">
+    <!-- Categories Section -->
+    <section id="categories" class="categories">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">What We Offer</h2>
-                <p class="section-subtitle">Premium grinding services for your favorite Roblox games</p>
+                <h2 class="section-title">Shop by Category</h2>
+                <p class="section-subtitle">Find exactly what you're looking for</p>
             </div>
             
-            <div class="services-grid">
-                <!-- Blox Fruits Card -->
-                <div class="service-card">
-                    <div class="card-image">
-                        <div class="card-badge">Popular</div>
-                        <div class="game-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-                            <i class="fas fa-lemon"></i>
-                        </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="electronics">
+                    <div class="category-icon">
+                        <i class="fas fa-laptop"></i>
                     </div>
-                    <div class="card-content">
-                        <h3>Blox Fruits</h3>
-                        <p class="card-description">Professional grinding, leveling, and mastery farming services</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Fast leveling & mastery</li>
-                            <li><i class="fas fa-check"></i> Fruit hunting & trading</li>
-                            <li><i class="fas fa-check"></i> Boss farming</li>
-                        </ul>
-                        <div class="card-footer">
-                            <div class="card-price">
-                                <span class="price-label">Starting at</span>
-                                <span class="price-value">$9.99</span>
+                    <h3>Electronics</h3>
+                    <p>Latest gadgets & tech</p>
+                </div>
+                
+                <div class="category-card" data-category="fashion">
+                    <div class="category-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <h3>Fashion</h3>
+                    <p>Trending styles</p>
+                </div>
+                
+                <div class="category-card" data-category="home">
+                    <div class="category-icon">
+                        <i class="fas fa-couch"></i>
+                    </div>
+                    <h3>Home & Garden</h3>
+                    <p>Decor & furniture</p>
+                </div>
+                
+                <div class="category-card" data-category="sports">
+                    <div class="category-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Sports</h3>
+                    <p>Fitness & outdoor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Best sellers and new arrivals</p>
+            </div>
+            
+            <div class="product-filters">
+                <button class="filter-btn active" data-filter="all">All Products</button>
+                <button class="filter-btn" data-filter="electronics">Electronics</button>
+                <button class="filter-btn" data-filter="fashion">Fashion</button>
+                <button class="filter-btn" data-filter="home">Home & Garden</button>
+                <button class="filter-btn" data-filter="sports">Sports</button>
+            </div>
+            
+            <div class="products-grid" id="products-grid">
+                <!-- Product 1: Wireless Headphones -->
+                <div class="product-card" data-category="electronics">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <i class="fas fa-headphones"></i>
+                        </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Wireless Headphones Pro</h3>
+                        <p class="product-description">Premium noise-cancelling headphones with 30hr battery</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.5)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="old-price">$149.99</span>
+                                <span class="current-price">$99.99</span>
                             </div>
-                            <button class="btn btn-card">Order Now</button>
+                            <button class="btn btn-add-cart" data-id="1" data-name="Wireless Headphones Pro" data-price="99.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Pet Simulator X Card -->
-                <div class="service-card">
-                    <div class="card-image">
-                        <div class="card-badge featured">Trending</div>
-                        <div class="game-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
-                            <i class="fas fa-paw"></i>
+
+                <!-- Product 2: Smart Watch -->
+                <div class="product-card" data-category="electronics">
+                    <div class="product-badge new">New</div>
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <i class="fas fa-clock"></i>
                         </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
                     </div>
-                    <div class="card-content">
-                        <h3>Pet Simulator X</h3>
-                        <p class="card-description">Rare pets, massive gem farming, and exclusive event grinding</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Rare pet collection</li>
-                            <li><i class="fas fa-check"></i> Gem farming</li>
-                            <li><i class="fas fa-check"></i> Event exclusive items</li>
-                        </ul>
-                        <div class="card-footer">
-                            <div class="card-price">
-                                <span class="price-label">Starting at</span>
-                                <span class="price-value">$14.99</span>
+                    <div class="product-content">
+                        <h3>Smart Watch Ultra</h3>
+                        <p class="product-description">Fitness tracker with heart rate monitor & GPS</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(5.0)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="current-price">$199.99</span>
                             </div>
-                            <button class="btn btn-card">Order Now</button>
+                            <button class="btn btn-add-cart" data-id="2" data-name="Smart Watch Ultra" data-price="199.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Da Hood Card -->
-                <div class="service-card">
-                    <div class="card-image">
-                        <div class="game-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
-                            <i class="fas fa-crosshairs"></i>
+
+                <!-- Product 3: Designer Jacket -->
+                <div class="product-card" data-category="fashion">
+                    <div class="product-badge sale">-30%</div>
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                            <i class="fas fa-vest"></i>
                         </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
                     </div>
-                    <div class="card-content">
-                        <h3>Da Hood</h3>
-                        <p class="card-description">Cash grinding, weapon farming, and skill development services</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Cash farming</li>
-                            <li><i class="fas fa-check"></i> Weapon collection</li>
-                            <li><i class="fas fa-check"></i> Skill progression</li>
-                        </ul>
-                        <div class="card-footer">
-                            <div class="card-price">
-                                <span class="price-label">Starting at</span>
-                                <span class="price-value">$12.99</span>
+                    <div class="product-content">
+                        <h3>Premium Leather Jacket</h3>
+                        <p class="product-description">Genuine leather with modern fit</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.0)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="old-price">$199.99</span>
+                                <span class="current-price">$139.99</span>
                             </div>
-                            <button class="btn btn-card">Order Now</button>
+                            <button class="btn btn-add-cart" data-id="3" data-name="Premium Leather Jacket" data-price="139.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Premium Items Card -->
-                <div class="service-card">
-                    <div class="card-image">
-                        <div class="card-badge new">New</div>
-                        <div class="game-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
-                            <i class="fas fa-gem"></i>
+
+                <!-- Product 4: Running Shoes -->
+                <div class="product-card" data-category="sports">
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <i class="fas fa-shoe-prints"></i>
+                        </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Pro Running Shoes</h3>
+                        <p class="product-description">Lightweight with maximum comfort & support</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.7)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="current-price">$89.99</span>
+                            </div>
+                            <button class="btn btn-add-cart" data-id="4" data-name="Pro Running Shoes" data-price="89.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
-                    <div class="card-content">
-                        <h3>Premium Items</h3>
-                        <p class="card-description">Rare collectibles, limited editions, and exclusive content</p>
-                        <ul class="card-features">
-                            <li><i class="fas fa-check"></i> Rare collectibles</li>
-                            <li><i class="fas fa-check"></i> Limited edition items</li>
-                            <li><i class="fas fa-check"></i> Game-specific rewards</li>
-                        </ul>
-                        <div class="card-footer">
-                            <div class="card-price">
-                                <span class="price-label">Starting at</span>
-                                <span class="price-value">$19.99</span>
+                </div>
+
+                <!-- Product 5: Coffee Maker -->
+                <div class="product-card" data-category="home">
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);">
+                            <i class="fas fa-mug-hot"></i>
+                        </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Smart Coffee Maker</h3>
+                        <p class="product-description">Programmable with auto-brew feature</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.2)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="current-price">$79.99</span>
                             </div>
-                            <button class="btn btn-card">Order Now</button>
+                            <button class="btn btn-add-cart" data-id="5" data-name="Smart Coffee Maker" data-price="79.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Yoga Mat -->
+                <div class="product-card" data-category="sports">
+                    <div class="product-badge">Eco-Friendly</div>
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);">
+                            <i class="fas fa-spa"></i>
+                        </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Premium Yoga Mat</h3>
+                        <p class="product-description">Non-slip, eco-friendly material</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(4.9)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="current-price">$39.99</span>
+                            </div>
+                            <button class="btn btn-add-cart" data-id="6" data-name="Premium Yoga Mat" data-price="39.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 7: Bluetooth Speaker -->
+                <div class="product-card" data-category="electronics">
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Portable Bluetooth Speaker</h3>
+                        <p class="product-description">Waterproof with 360° sound</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(4.6)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="current-price">$59.99</span>
+                            </div>
+                            <button class="btn btn-add-cart" data-id="7" data-name="Portable Bluetooth Speaker" data-price="59.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 8: Designer Sunglasses -->
+                <div class="product-card" data-category="fashion">
+                    <div class="product-badge">Trending</div>
+                    <div class="product-image">
+                        <div class="product-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                            <i class="fas fa-glasses"></i>
+                        </div>
+                        <button class="wishlist-btn">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                    <div class="product-content">
+                        <h3>Designer Sunglasses</h3>
+                        <p class="product-description">UV protection with polarized lenses</p>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(4.3)</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="current-price">$129.99</span>
+                            </div>
+                            <button class="btn btn-add-cart" data-id="8" data-name="Designer Sunglasses" data-price="129.99">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -213,183 +440,54 @@
     <!-- Features Section -->
     <section class="features">
         <div class="container">
-            <div class="features-content">
-                <div class="features-text">
-                    <h2>Why Choose XY Services?</h2>
-                    <div class="feature-list">
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>24 Hour Processing</h3>
-                                <p>Most orders are completed within 24 hours of approval</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-lock"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>100% Secure</h3>
-                                <p>Your account safety is our top priority with secure grinding methods</p>
-                            </div>
-                        </div>
-                        
-                        <div class="feature-item">
-                            <div class="feature-icon">
-                                <i class="fas fa-headset"></i>
-                            </div>
-                            <div class="feature-content">
-                                <h3>24/7 Support</h3>
-                                <p>Round-the-clock customer support via Discord and live chat</p>
-                            </div>
-                        </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
                     </div>
+                    <h3>Free Shipping</h3>
+                    <p>On orders over $50</p>
                 </div>
                 
-                <div class="features-visual">
-                    <div class="floating-elements">
-                        <div class="floating-card">
-                            <i class="fab fa-discord"></i>
-                            <span>Discord Support</span>
-                        </div>
-                        <div class="floating-card">
-                            <i class="fas fa-certificate"></i>
-                            <span>Verified Service</span>
-                        </div>
-                        <div class="floating-card">
-                            <i class="fas fa-rocket"></i>
-                            <span>Fast Delivery</span>
-                        </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-undo"></i>
                     </div>
+                    <h3>Easy Returns</h3>
+                    <p>30-day return policy</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Secure Payment</h3>
+                    <p>100% secure checkout</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Always here to help</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
-    <section id="pricing" class="pricing">
+    <!-- Newsletter Section -->
+    <section id="contact" class="newsletter">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">How It Works</h2>
-                <p class="section-subtitle">Simple 3-step process to get your order completed</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="step-number">1</div>
-                    <div class="pricing-header">
-                        <h3>Place Order</h3>
-                    </div>
-                    <p class="step-description">Contact us via Discord or the form below with your grinding requirements and game details.</p>
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Subscribe to Our Newsletter</h2>
+                    <p>Get the latest deals and exclusive offers delivered to your inbox</p>
                 </div>
-                
-                <div class="pricing-card featured">
-                    <div class="step-number">2</div>
-                    <div class="pricing-header">
-                        <h3>Processing</h3>
-                    </div>
-                    <p class="step-description">We'll review your order and start working on it. Most orders are completed within 24 hours.</p>
-                    <div class="processing-badge">⏱️ ~24 Hours</div>
-                </div>
-                
-                <div class="pricing-card">
-                    <div class="step-number">3</div>
-                    <div class="pricing-header">
-                        <h3>Delivery</h3>
-                    </div>
-                    <p class="step-description">Receive your completed service safely and securely. We notify you when everything is ready!</p>
-                </div>
-            </div>
-            
-            <div class="info-banner">
-                <i class="fas fa-info-circle"></i>
-                <p><strong>Processing Time:</strong> All orders typically take around 24 hours to complete. Complex requests may take longer. We'll keep you updated throughout the process!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-content">
-                <div class="contact-info">
-                    <h2>Get In Touch</h2>
-                    <p>Ready to level up your Roblox experience? Contact us today!</p>
-                    
-                    <div class="contact-methods">
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fab fa-discord"></i>
-                            </div>
-                            <div class="method-info">
-                                <h3>Discord</h3>
-                                <p>Join our Discord server for instant support</p>
-                                <a href="#" class="contact-link">discord.gg/xyservices</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="method-info">
-                                <h3>Email</h3>
-                                <p>Send us an email for detailed inquiries</p>
-                                <a href="mailto:support@xyservices.com" class="contact-link">support@xyservices.com</a>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-method">
-                            <div class="method-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="method-info">
-                                <h3>Live Chat</h3>
-                                <p>Chat with our support team in real-time</p>
-                                <button class="contact-link btn-chat">Start Chat</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form class="form-3d">
-                        <div class="form-group">
-                            <input type="text" id="name" required>
-                            <label for="name">Your Name</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <input type="email" id="email" required>
-                            <label for="email">Email Address</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <select id="service" required>
-                                <option value="">Select Service</option>
-                                <option value="bloxfruits">Blox Fruits Grinding</option>
-                                <option value="petsimx">Pet Simulator X</option>
-                                <option value="dahood">Da Hood Grinding</option>
-                                <option value="items">Premium Items</option>
-                                <option value="other">Other / Custom</option>
-                            </select>
-                            <label for="service">Service Type</label>
-                        </div>
-                        
-                        <div class="form-group">
-                            <textarea id="message" required></textarea>
-                            <label for="message">Your Message</label>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary btn-3d">
-                            <span>Send Message</span>
-                            <div class="btn-glow"></div>
-                        </button>
-                    </form>
-                </div>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
@@ -400,51 +498,52 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <span class="logo-text">XY Services</span>
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="logo-text">ShopHub</span>
                     </div>
-                    <p>Premium Roblox services and products for the ultimate gaming experience.</p>
+                    <p>Your one-stop shop for quality products at amazing prices.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Services</h3>
+                    <h3>Shop</h3>
                     <ul>
-                        <li><a href="#">Blox Fruits Grinding</a></li>
-                        <li><a href="#">Pet Simulator X</a></li>
-                        <li><a href="#">Da Hood Grinding</a></li>
-                        <li><a href="#">Premium Items</a></li>
+                        <li><a href="#products">All Products</a></li>
+                        <li><a href="#categories">Categories</a></li>
+                        <li><a href="#deals">Today's Deals</a></li>
+                        <li><a href="#">New Arrivals</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
-                    <h3>Support</h3>
+                    <h3>Customer Service</h3>
                     <ul>
-                        <li><a href="#">Help Center</a></li>
                         <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Discord Server</a></li>
-                        <li><a href="#">Live Chat</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">FAQ</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h3>Legal</h3>
                     <ul>
-                        <li><a href="#">Terms of Service</a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
                         <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Sitemap</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 XY Services. All rights reserved.</p>
-                <p>Not affiliated with Roblox Corporation.</p>
+                <p>&copy; 2025 ShopHub. All rights reserved.</p>
+                <p>Made with <i class="fas fa-heart" style="color: #f43f5e;"></i> for online shoppers</p>
             </div>
         </div>
     </footer>
