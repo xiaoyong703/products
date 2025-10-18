@@ -42,12 +42,6 @@
     --radius-xl: 16px;
     --radius-full: 9999px;
     
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
-    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
-    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
-    
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-base: 200ms ease;
@@ -145,7 +139,7 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -154,8 +148,7 @@ body {
 }
 
 .navbar.scrolled {
-    background: rgba(0, 0, 0, 0.95);
-    box-shadow: var(--shadow-md);
+    background: rgba(0, 0, 0, 0.98);
     border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -166,6 +159,7 @@ body {
     padding: var(--spacing-md) var(--spacing-lg);
     max-width: 1280px;
     margin: 0 auto;
+    gap: var(--spacing-lg);
 }
 
 .logo-text {
@@ -209,6 +203,38 @@ body {
     border-radius: var(--radius-full);
 }
 
+/* Search Bar */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--medium-gray);
+    border: 1px solid var(--border-gray);
+    border-radius: var(--radius-md);
+    padding: 8px 16px;
+    min-width: 240px;
+}
+
+.search-container i {
+    color: var(--text-muted);
+    margin-right: 8px;
+    font-size: 0.875rem;
+}
+
+.search-bar {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-family: var(--font-primary);
+    font-size: 0.875rem;
+    width: 100%;
+}
+
+.search-bar::placeholder {
+    color: var(--text-muted);
+}
+
 /* Theme Toggle */
 .theme-toggle {
     background: var(--medium-gray);
@@ -223,6 +249,7 @@ body {
     transition: all var(--transition-base);
     color: var(--text-secondary);
     font-size: 1rem;
+    flex-shrink: 0;
 }
 
 .theme-toggle:hover {
@@ -230,6 +257,7 @@ body {
     border-color: var(--accent);
     color: var(--text-primary);
 }
+
 
 .nav-toggle {
     display: none;
@@ -252,21 +280,9 @@ body {
     display: flex;
     align-items: center;
     padding-top: 80px;
-    background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.1) 0%, var(--black) 50%);
+    background: var(--black);
     position: relative;
     overflow: hidden;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    opacity: 0.5;
 }
 
 .hero-content {
@@ -336,13 +352,11 @@ body {
 .btn-primary {
     background: var(--accent);
     color: var(--text-primary);
-    box-shadow: var(--shadow-md);
 }
 
 .btn-primary:hover {
     background: var(--accent-hover);
     transform: translateY(-1px);
-    box-shadow: var(--shadow-lg);
 }
 
 .btn-outline {
@@ -449,15 +463,14 @@ body {
 }
 
 .service-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(59, 130, 246, 0.15);
-    border-color: var(--accent);
+    transform: translateY(-4px);
+    border-color: rgba(59, 130, 246, 0.5);
 }
 
 .card-image {
     position: relative;
     padding: var(--spacing-3xl) var(--spacing-xl);
-    background: linear-gradient(135deg, var(--medium-gray) 0%, var(--dark-gray) 100%);
+    background: var(--medium-gray);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -495,12 +508,11 @@ body {
     justify-content: center;
     font-size: 3.5rem;
     color: var(--text-primary);
-    box-shadow: var(--shadow-xl);
     transition: all var(--transition-base);
 }
 
 .service-card:hover .game-icon {
-    transform: scale(1.1) rotate(5deg);
+    transform: scale(1.05);
 }
 
 .card-content {
@@ -587,8 +599,7 @@ body {
 
 .btn-card:hover {
     background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    transform: translateY(-1px);
 }
 
 
@@ -1065,7 +1076,6 @@ body {
         width: 100%;
         padding: var(--spacing-xl) 0;
         border-bottom: 1px solid var(--border-gray);
-        box-shadow: var(--shadow-xl);
         transition: left var(--transition-base);
         gap: var(--spacing-md);
     }
@@ -1076,6 +1086,10 @@ body {
 
     .nav-toggle {
         display: flex;
+    }
+    
+    .search-container {
+        display: none;
     }
     
     .theme-toggle {
@@ -1200,4 +1214,16 @@ body {
 
 .mb-4 {
     margin-bottom: var(--spacing-xl);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

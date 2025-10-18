@@ -37,6 +37,35 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Search Bar Functionality
+const searchBar = document.getElementById('search-bar');
+const serviceCards = document.querySelectorAll('.service-card');
+
+if (searchBar) {
+    searchBar.addEventListener('input', (e) => {
+        const searchTerm = e.target.value.toLowerCase().trim();
+        
+        serviceCards.forEach(card => {
+            const cardTitle = card.querySelector('h3').textContent.toLowerCase();
+            const cardDescription = card.querySelector('.card-description').textContent.toLowerCase();
+            
+            if (cardTitle.includes(searchTerm) || cardDescription.includes(searchTerm)) {
+                card.style.display = 'flex';
+                card.style.animation = 'fadeIn 0.3s ease';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+        
+        // Show all if search is empty
+        if (searchTerm === '') {
+            serviceCards.forEach(card => {
+                card.style.display = 'flex';
+            });
+        }
+    });
+}
+
 // Mobile Navigation Toggle
 const navToggle = document.querySelector('.nav-toggle');
 const navMenu = document.querySelector('.nav-menu');
@@ -222,13 +251,7 @@ function animateNumbers() {
 window.addEventListener('scroll', animateNumbers);
 window.addEventListener('load', animateNumbers);
 
-// Add hover effects to service cards
-const serviceCards = document.querySelectorAll('.service-item');
-serviceCards.forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transition = 'all 0.3s ease';
-    });
-});
+// Add hover effects to service cards (combined with search functionality above)
 
 // Parallax effect for hero section (subtle)
 const hero = document.querySelector('.hero');
