@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobloxPro Services - Premium Roblox Services & Products</title>
+    <meta name="description" content="Professional Roblox grinding services, game items, and premium products. Fast, reliable, and secure.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="roblox-logo">
+                <div class="cube-stack">
+                    <div class="cube cube-1"></div>
+                    <div class="cube cube-2"></div>
+                    <div class="cube cube-3"></div>
+                    <div class="cube cube-4"></div>
+                </div>
+            </div>
+            <div class="loading-text">
+                <h2>RobloxPro Services</h2>
+                <p>Loading your premium experience...</p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <div class="loading-percentage">0%</div>
+        </div>
+        <div class="loading-particles"></div>
+    </div>
+
+    <!-- 3D Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-3d">
+                    <span class="logo-text">RobloxPro</span>
+                    <div class="logo-glow"></div>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#pricing" class="nav-link">Pricing</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text" data-aos="fade-up">
+                <h1 class="hero-title">
+                    <span class="title-line">Premium Roblox</span>
+                    <span class="title-line highlight">Services & Products</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Fast, reliable, and secure Roblox grinding services, game items, and premium products. 
+                    Level up your gaming experience with our professional team.
+                </p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary btn-3d">
+                        <span>Browse Services</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                    <button class="btn btn-outline btn-3d">
+                        <span>View Pricing</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero-stats" data-aos="fade-up" data-aos-delay="200">
+                <div class="stat-item">
+                    <div class="stat-number">10K+</div>
+                    <div class="stat-label">Orders Completed</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Support Available</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-visual">
+            <div class="floating-cards">
+                <div class="service-card card-1" data-aos="fade-left" data-aos-delay="400">
+                    <i class="fas fa-gamepad"></i>
+                    <h3>Grinding Services</h3>
+                </div>
+                <div class="service-card card-2" data-aos="fade-left" data-aos-delay="600">
+                    <i class="fas fa-coins"></i>
+                    <h3>Game Currency</h3>
+                </div>
+                <div class="service-card card-3" data-aos="fade-left" data-aos-delay="800">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Achievements</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Our Services</h2>
+                <p class="section-subtitle">Professional Roblox services tailored to your gaming needs</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-item" data-aos="flip-left" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Grinding Services</h3>
+                    <p>Professional grinding for levels, XP, and in-game currencies across popular Roblox games.</p>
+                    <ul class="service-features">
+                        <li>24/7 grinding</li>
+                        <li>Safe & secure</li>
+                        <li>Fast completion</li>
+                    </ul>
+                    <button class="btn btn-service">Learn More</button>
+                </div>
+                
+                <div class="service-item" data-aos="flip-left" data-aos-delay="200">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Premium Items</h3>
+                    <p>Rare items, limited editions, and exclusive content for your favorite Roblox games.</p>
+                    <ul class="service-features">
+                        <li>Rare collectibles</li>
+                        <li>Limited editions</li>
+                        <li>Verified authentic</li>
+                    </ul>
+                    <button class="btn btn-service">Learn More</button>
+                </div>
+                
+                <div class="service-item" data-aos="flip-left" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Account Boosting</h3>
+                    <p>Professional account leveling and stat boosting services for competitive gameplay.</p>
+                    <ul class="service-features">
+                        <li>Rank boosting</li>
+                        <li>Stat enhancement</li>
+                        <li>Achievement unlock</li>
+                    </ul>
+                    <button class="btn btn-service">Learn More</button>
+                </div>
+                
+                <div class="service-item" data-aos="flip-left" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Account Security</h3>
+                    <p>Account recovery, security setup, and protection services for your Roblox account.</p>
+                    <ul class="service-features">
+                        <li>2FA setup</li>
+                        <li>Account recovery</li>
+                        <li>Security audit</li>
+                    </ul>
+                    <button class="btn btn-service">Learn More</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="features-text" data-aos="fade-right">
+                    <h2>Why Choose RobloxPro?</h2>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-lightning-bolt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Lightning Fast</h3>
+                                <p>Quick turnaround times with 24/7 service availability</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-lock"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>100% Secure</h3>
+                                <p>Your account safety is our top priority with secure methods</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>24/7 Support</h3>
+                                <p>Round-the-clock customer support via Discord and live chat</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="features-visual" data-aos="fade-left">
+                    <div class="floating-elements">
+                        <div class="floating-card">
+                            <i class="fab fa-discord"></i>
+                            <span>Discord Support</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-certificate"></i>
+                            <span>Verified Service</span>
+                        </div>
+                        <div class="floating-card">
+                            <i class="fas fa-rocket"></i>
+                            <span>Fast Delivery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 class="section-title">Pricing Plans</h2>
+                <p class="section-subtitle">Choose the perfect plan for your gaming needs</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">9.99</span>
+                        </div>
+                        <p class="billing">Per service</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Basic grinding service</li>
+                        <li><i class="fas fa-check"></i> 24-48h delivery</li>
+                        <li><i class="fas fa-check"></i> Email support</li>
+                        <li><i class="fas fa-times"></i> Priority support</li>
+                        <li><i class="fas fa-times"></i> Custom requests</li>
+                    </ul>
+                    <button class="btn btn-pricing">Get Started</button>
+                </div>
+                
+                <div class="pricing-card featured" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="pricing-header">
+                        <h3>Pro</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">19.99</span>
+                        </div>
+                        <p class="billing">Per service</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Advanced grinding service</li>
+                        <li><i class="fas fa-check"></i> 12-24h delivery</li>
+                        <li><i class="fas fa-check"></i> Discord support</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-times"></i> Custom requests</li>
+                    </ul>
+                    <button class="btn btn-pricing btn-featured">Get Started</button>
+                </div>
+                
+                <div class="pricing-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="pricing-header">
+                        <h3>Premium</h3>
+                        <div class="price">
+                            <span class="currency">$</span>
+                            <span class="amount">39.99</span>
+                        </div>
+                        <p class="billing">Per service</p>
+                    </div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Premium grinding service</li>
+                        <li><i class="fas fa-check"></i> 6-12h delivery</li>
+                        <li><i class="fas fa-check"></i> Live chat support</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                        <li><i class="fas fa-check"></i> Custom requests</li>
+                    </ul>
+                    <button class="btn btn-pricing">Get Started</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <h2>Get In Touch</h2>
+                    <p>Ready to level up your Roblox experience? Contact us today!</p>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fab fa-discord"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Discord</h3>
+                                <p>Join our Discord server for instant support</p>
+                                <a href="#" class="contact-link">discord.gg/robloxpro</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Email</h3>
+                                <p>Send us an email for detailed inquiries</p>
+                                <a href="mailto:support@robloxpro.com" class="contact-link">support@robloxpro.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-method">
+                            <div class="method-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="method-info">
+                                <h3>Live Chat</h3>
+                                <p>Chat with our support team in real-time</p>
+                                <button class="contact-link btn-chat">Start Chat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form" data-aos="fade-left">
+                    <form class="form-3d">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="">Select Service</option>
+                                <option value="grinding">Grinding Services</option>
+                                <option value="items">Premium Items</option>
+                                <option value="boosting">Account Boosting</option>
+                                <option value="security">Account Security</option>
+                            </select>
+                            <label for="service">Service Type</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-3d">
+                            <span>Send Message</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-3d">
+                            <span class="logo-text">RobloxPro</span>
+                            <div class="logo-glow"></div>
+                        </div>
+                    </div>
+                    <p>Premium Roblox services and products for the ultimate gaming experience.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Grinding Services</a></li>
+                        <li><a href="#">Premium Items</a></li>
+                        <li><a href="#">Account Boosting</a></li>
+                        <li><a href="#">Account Security</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Discord Server</a></li>
+                        <li><a href="#">Live Chat</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 RobloxPro Services. All rights reserved.</p>
+                <p>Not affiliated with Roblox Corporation.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
