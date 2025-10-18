@@ -18,19 +18,24 @@ const loadingInterval = setInterval(() => {
     loadingPercentage.textContent = Math.floor(loadingProgress) + '%';
 }, 200);
 
-// Three.js 3D Background
+// Three.js 3D Background (Optimized for performance)
 const canvas = document.getElementById('bg-canvas');
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+const renderer = new THREE.WebGLRenderer({ 
+    canvas, 
+    alpha: true, 
+    antialias: false, // Disable for better performance
+    powerPreference: "high-performance"
+});
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Cap pixel ratio for performance
 camera.position.z = 5;
 
-// Create particles
+// Create particles (reduced count for performance)
 const particlesGeometry = new THREE.BufferGeometry();
-const particlesCount = 1000;
+const particlesCount = 500; // Reduced from 1000
 const posArray = new Float32Array(particlesCount * 3);
 
 for (let i = 0; i < particlesCount * 3; i++) {
@@ -41,7 +46,7 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3
 
 const particlesMaterial = new THREE.PointsMaterial({
     size: 0.05,
-    color: 0xa855f7,
+    color: 0x00d4ff,
     transparent: true,
     opacity: 0.9,
     blending: THREE.AdditiveBlending
@@ -50,10 +55,10 @@ const particlesMaterial = new THREE.PointsMaterial({
 const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(particlesMesh);
 
-// Create geometric shapes
-const geometry = new THREE.TorusGeometry(1, 0.3, 16, 100);
+// Create geometric shapes (optimized)
+const geometry = new THREE.TorusGeometry(1, 0.3, 12, 80); // Reduced segments
 const material = new THREE.MeshStandardMaterial({
-    color: 0xa855f7,
+    color: 0x00d4ff,
     wireframe: true,
     transparent: true,
     opacity: 0.4
@@ -64,9 +69,9 @@ torus.position.x = 3;
 scene.add(torus);
 
 // Create second torus
-const geometry2 = new THREE.TorusGeometry(0.7, 0.2, 16, 100);
+const geometry2 = new THREE.TorusGeometry(0.7, 0.2, 12, 80); // Reduced segments
 const material2 = new THREE.MeshStandardMaterial({
-    color: 0xec4899,
+    color: 0x3b82f6,
     wireframe: true,
     transparent: true,
     opacity: 0.4
@@ -79,7 +84,7 @@ scene.add(torus2);
 // Create third shape - octahedron
 const geometry3 = new THREE.OctahedronGeometry(0.8, 0);
 const material3 = new THREE.MeshStandardMaterial({
-    color: 0x6366f1,
+    color: 0xa855f7,
     wireframe: true,
     transparent: true,
     opacity: 0.4
@@ -89,50 +94,52 @@ octa.position.z = -4;
 octa.position.y = 2;
 scene.add(octa);
 
-// Add lighting
-const pointLight = new THREE.PointLight(0xa855f7, 1.5);
+// Add lighting (reduced intensity for performance)
+const pointLight = new THREE.PointLight(0x00d4ff, 1);
 pointLight.position.set(5, 5, 5);
 scene.add(pointLight);
 
-const pointLight2 = new THREE.PointLight(0xec4899, 1.5);
+const pointLight2 = new THREE.PointLight(0x3b82f6, 1);
 pointLight2.position.set(-5, -5, -5);
 scene.add(pointLight2);
-
-const pointLight3 = new THREE.PointLight(0x6366f1, 1);
-pointLight3.position.set(0, 5, 0);
-scene.add(pointLight3);
 
 const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
 scene.add(ambientLight);
 
-// Mouse movement effect
+// Mouse movement effect (throttled for performance)
 let mouseX = 0;
 let mouseY = 0;
+let targetX = 0;
+let targetY = 0;
 
 document.addEventListener('mousemove', (event) => {
-    mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-    mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+    targetX = (event.clientX / window.innerWidth) * 2 - 1;
+    targetY = -(event.clientY / window.innerHeight) * 2 + 1;
 });
 
-// Animation loop
+// Animation loop (optimized)
 function animate() {
     requestAnimationFrame(animate);
 
-    // Rotate shapes
-    torus.rotation.x += 0.005;
-    torus.rotation.y += 0.005;
-    torus2.rotation.x -= 0.003;
-    torus2.rotation.y -= 0.003;
-    octa.rotation.x += 0.007;
-    octa.rotation.y += 0.004;
+    // Smooth mouse interpolation
+    mouseX += (targetX - mouseX) * 0.05;
+    mouseY += (targetY - mouseY) * 0.05;
 
-    // Rotate particles
-    particlesMesh.rotation.y += 0.0005;
-    particlesMesh.rotation.x += 0.0002;
+    // Rotate shapes (reduced rotation speed)
+    torus.rotation.x += 0.003;
+    torus.rotation.y += 0.003;
+    torus2.rotation.x -= 0.002;
+    torus2.rotation.y -= 0.002;
+    octa.rotation.x += 0.004;
+    octa.rotation.y += 0.002;
 
-    // Camera follows mouse
-    camera.position.x += (mouseX * 0.5 - camera.position.x) * 0.05;
-    camera.position.y += (mouseY * 0.5 - camera.position.y) * 0.05;
+    // Rotate particles (slower)
+    particlesMesh.rotation.y += 0.0003;
+    particlesMesh.rotation.x += 0.0001;
+
+    // Camera follows mouse (smoother)
+    camera.position.x += (mouseX * 0.3 - camera.position.x) * 0.03;
+    camera.position.y += (mouseY * 0.3 - camera.position.y) * 0.03;
     camera.lookAt(scene.position);
 
     renderer.render(scene, camera);
@@ -325,15 +332,22 @@ floatingCards.forEach((card, index) => {
     });
 });
 
-// Parallax Scroll Effect
+// Parallax Scroll Effect (throttled for performance)
+let ticking = false;
 window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.hero-visual, .features-visual');
-    
-    parallaxElements.forEach(element => {
-        const speed = 0.5;
-        element.style.transform = `translateY(${scrolled * speed}px)`;
-    });
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.hero-visual, .features-visual');
+            
+            parallaxElements.forEach(element => {
+                const speed = 0.3; // Reduced speed
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+            ticking = false;
+        });
+        ticking = true;
+    }
 });
 
 // Number Counter Animation for Stats
@@ -540,6 +554,6 @@ const createCursorTrail = () => {
 // Uncomment to enable cursor trail effect
 // createCursorTrail();
 
-console.log('🎮 RobloxPro Services - Website Loaded Successfully!');
+console.log('🎮 XY Services - Website Loaded Successfully!');
 console.log('💎 3D Effects Active');
 console.log('⚡ All animations initialized');
