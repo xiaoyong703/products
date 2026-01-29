@@ -1,6 +1,5 @@
 /* ========================================
-   ShopHub - Modern E-Commerce Store
-   Clean & Modern Design
+   Sudish is Gay
    ======================================== */
 
 /* Google Fonts */
@@ -9,10 +8,10 @@
 /* CSS Variables */
 :root {
     /* Colors */
-    --primary: #3b82f6;
-    --primary-dark: #2563eb;
-    --primary-light: #60a5fa;
-    --secondary: #8b5cf6;
+    --primary: #ff1493;
+    --primary-dark: #ff69b4;
+    --primary-light: #ffb6c1;
+    --secondary: #00bfff;
     --success: #10b981;
     --warning: #f59e0b;
     --danger: #ef4444;
@@ -1000,5 +999,56 @@ ul {
     
     .btn-add-cart {
         width: 100%;
+    }
+}
+/* Message Container Styles */
+.message-container {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff1493 0%, #00bfff 100%);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.main-message {
+    font-size: 6rem;
+    font-weight: 700;
+    color: white;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    margin: 0;
+    letter-spacing: 2px;
+    animation: fadeInScale 1s ease-out;
+}
+
+.subtitle {
+    font-size: 2rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-top: 20px;
+    letter-spacing: 1px;
+    animation: fadeInScale 1s ease-out 0.2s both;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-message {
+        font-size: 3.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.5rem;
     }
 }
